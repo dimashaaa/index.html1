@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Борода — барбершоп в Казани</title>
+<meta name="description" content="Барбершоп «Борода» в Казани: мужские стрижки, уход за бородой, онлайн-запись.">
+<meta name="theme-color" content="#141414">
+<style>
+  :root{
+    --bg:#141414;
+    --bg-2:#1c1c1c;
+    --line:#2e2e2e;
+    --text:#ece7df;
+    --muted:#a39d93;
+    --accent:#c9a46a;
+    --accent-text:#141414;
+    --radius:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;font-size:16px;
+  }
+  a{color:inherit}
+  img,svg,iframe{display:block;max-width:100%}
+  .wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.15}
+  section{padding:64px 0;scroll-margin-top:60px}
+  h2{font-size:clamp(28px,6vw,40px);margin-bottom:10px}
+  .lead{color:var(--muted);margin-bottom:32px;max-width:520px}
+
+  .btn{
+    display:inline-block;background:var(--accent);color:var(--accent-text);
+    border:2px solid var(--accent);border-radius:var(--radius);
+    padding:14px 28px;font-size:16px;font-weight:700;text-decoration:none;
+    cursor:pointer;font-family:inherit;min-height:48px;text-align:center;
+  }
+  .btn:hover,.btn:focus-visible{background:transparent;color:var(--accent)}
+  .btn-sm{padding:8px 16px;min-height:40px;font-size:14px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:10;background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-family:Georgia,serif;font-weight:700;font-size:22px;letter-spacing:.04em;text-decoration:none}
+  nav{display:flex;gap:24px;align-items:center}
+  nav a.link{text-decoration:none;color:var(--muted);font-size:15px}
+  nav a.link:hover{color:var(--text)}
+
+  /* Hero */
+  .hero{
+    min-height:calc(100vh - 60px);min-height:calc(100svh - 60px);
+    display:flex;align-items:center;padding:48px 0;border-bottom:1px solid var(--line);
+  }
+  .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.18em;font-size:13px;margin-bottom:18px}
+  .hero h1{font-size:clamp(44px,13vw,96px);margin-bottom:20px}
+  .hero p{color:var(--muted);font-size:18px;max-width:480px;margin-bottom:32px}
+  .hero .meta{margin-top:28px;color:var(--muted);font-size:14px}
+
+  /* Services */
+  .services{display:grid;gap:0;border-top:1px solid var(--line)}
+  .service{
+    display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .service h3{font-size:22px}
+  .service p{color:var(--muted);font-size:15px;grid-column:1}
+  .price{font-family:Georgia,serif;font-size:24px;color:var(--accent);grid-row:1;grid-column:2;white-space:nowrap}
+  .service .btn{grid-column:1 / -1;justify-self:start;margin-top:10px}
+
+  /* Masters */
+  .bg-2{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .masters{display:grid;gap:24px}
+  .master{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .photo{
+    aspect-ratio:4/3;background:#232323;display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line);
+  }
+  .photo svg{width:42%;height:auto;color:#3a3a3a}
+  .master .info{padding:20px}
+  .master h3{font-size:24px;margin-bottom:4px}
+  .master .role{color:var(--accent);font-size:14px;margin-bottom:10px}
+  .master p{color:var(--muted);font-size:15px}
+
+  /* Form */
+  form{display:grid;gap:18px;max-width:520px}
+  label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+  input,select{
+    width:100%;background:var(--bg-2);color:var(--text);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:12px 14px;font:inherit;font-size:16px;min-height:48px;
+    appearance:none;-webkit-appearance:none;
+  }
+  select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23a39d93' stroke-width='2'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+  }
+  input::placeholder{color:#6d6860}
+  input:focus,select:focus{border-color:var(--accent);outline:none}
+  input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#d98a7a}
+  .row{display:grid;gap:18px}
+  .err{color:#d98a7a;font-size:13px;min-height:0}
+  .ok{
+    display:none;max-width:520px;border:1px solid var(--accent);border-radius:var(--radius);
+    padding:20px;margin-top:20px;
+  }
+  .ok.show{display:block}
+  .ok strong{display:block;font-family:Georgia,serif;font-size:20px;margin-bottom:6px}
+  .note{font-size:13px;color:var(--muted)}
+
+  /* Contacts */
+  .contacts{display:grid;gap:28px}
+  .contacts dl{display:grid;gap:18px}
+  .contacts dt{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+  .contacts dd{font-size:18px}
+  .contacts dd a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .map{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg-2)}
+  .map iframe{width:100%;height:320px;border:0;filter:grayscale(1) invert(.9) contrast(.9)}
+
+  footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+  @media (min-width:720px){
+    section{padding:96px 0}
+    .masters{grid-template-columns:1fr 1fr}
+    .row{grid-template-columns:1fr 1fr}
+    .contacts{grid-template-columns:1fr 1.3fr;align-items:start}
+    .map iframe{height:380px}
+    .service{grid-template-columns:1fr auto auto;gap:4px 32px}
+    .service .btn{grid-column:3;grid-row:1 / span 2;margin-top:0}
+    .price{grid-column:2;grid-row:1 / span 2}
+  }
+  @media (max-width:560px){
+    nav a.link{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="logo">БОРОДА</a>
+    <nav>
+      <a class="link" href="#services">Услуги</a>
+      <a class="link" href="#masters">Мастера</a>
+      <a class="link" href="#contacts">Контакты</a>
+      <a class="btn btn-sm" href="#booking">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-label="Главная">
+    <div class="wrap">
+      <p class="eyebrow">Барбершоп · Казань</p>
+      <h1>Борода</h1>
+      <p>Мужские стрижки и уход за бородой. Без суеты, по записи, с горячим полотенцем и крепким чаем.</p>
+      <a class="btn" href="#booking">Записаться</a>
+      <p class="meta">Ежедневно с 10:00 до 21:00</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>Услуги и цены</h2>
+      <p class="lead">Цены фиксированные. Длина волос и густота бороды на стоимость не влияют.</p>
+      <div class="services">
+        <div class="service">
+          <h3>Стрижка</h3>
+          <p>Консультация, мытьё головы, укладка.</p>
+          <div class="price">1500 ₽</div>
+          <a class="btn btn-sm" href="#booking" data-service="Стрижка — 1500 ₽">Выбрать</a>
+        </div>
+        <div class="service">
+          <h3>Борода</h3>
+          <p>Моделирование формы, контур, горячее полотенце.</p>
+          <div class="price">900 ₽</div>
+          <a class="btn btn-sm" href="#booking" data-service="Борода — 900 ₽">Выбрать</a>
+        </div>
+        <div class="service">
+          <h3>Комплекс</h3>
+          <p>Стрижка и борода за один визит. Выгода 200 ₽.</p>
+          <div class="price">2200 ₽</div>
+          <a class="btn btn-sm" href="#booking" data-service="Комплекс — 2200 ₽">Выбрать</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="masters" class="bg-2">
+    <div class="wrap">
+      <h2>Мастера</h2>
+      <p class="lead">Оба работают с классическими и современными стрижками.</p>
+      <div class="masters">
+        <article class="master">
+          <div class="photo" role="img" aria-label="Фото мастера Артёма (заглушка)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg>
+          </div>
+          <div class="info">
+            <h3>Артём</h3>
+            <p class="role">Старший барбер · 8 лет опыта</p>
+            <p>Классические стрижки, фейды, работа с опасной бритвой.</p>
+          </div>
+        </article>
+        <article class="master">
+          <div class="photo" role="img" aria-label="Фото мастера Ильдара (заглушка)">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M3 22c0-5 4-8 9-8s9 3 9 8z"/></svg>
+          </div>
+          <div class="info">
+            <h3>Ильдар</h3>
+            <p class="role">Барбер · 5 лет опыта</p>
+            <p>Моделирование бороды, современные текстурные стрижки.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="wrap">
+      <h2>Запись</h2>
+      <p class="lead">Оставьте данные, и мы перезвоним для подтверждения в течение 15 минут.</p>
+
+      <form id="form" novalidate>
+        <label>Имя
+          <input type="text" name="name" id="name" autocomplete="given-name" placeholder="Как к вам обращаться" required>
+          <span class="err" id="err-name"></span>
+        </label>
+
+        <label>Телефон
+          <input type="tel" name="phone" id="phone" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required>
+          <span class="err" id="err-phone"></span>
+        </label>
+
+        <label>Услуга
+          <select name="service" id="service" required>
+            <option value="">Выберите услугу</option>
+            <option>Стрижка — 1500 ₽</option>
+            <option>Борода — 900 ₽</option>
+            <option>Комплекс — 2200 ₽</option>
+          </select>
+          <span class="err" id="err-service"></span>
+        </label>
+
+        <div class="row">
+          <label>Дата
+            <input type="date" name="date" id="date" required>
+            <span class="err" id="err-date"></span>
+          </label>
+          <label>Время
+            <select name="time" id="time" required>
+              <option value="">Выберите время</option>
+            </select>
+            <span class="err" id="err-time"></span>
+          </label>
+        </div>
+
+        <button class="btn" type="submit">Записаться</button>
+        <p class="note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+      </form>
+
+      <div class="ok" id="ok" role="status" aria-live="polite">
+        <strong>Заявка принята</strong>
+        <span id="ok-text"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts" class="bg-2">
+    <div class="wrap">
+      <h2>Как нас найти</h2>
+      <p class="lead">Рядом с центром города, пешком от метро «Кремлёвская».</p>
+      <div class="contacts">
+        <dl>
+          <div><dt>Адрес</dt><dd>г. Казань, ул. Баумана, 40</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+78430000000">+7 (843) 000-00-00</a></dd></div>
+          <div><dt>Часы работы</dt><dd>Ежедневно, 10:00–21:00</dd></div>
+        </dl>
+        <div class="map">
+          <iframe
+            title="Карта: барбершоп Борода, Казань"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=49.1150%2C55.7850%2C49.1290%2C55.7925&amp;layer=mapnik&amp;marker=55.7887%2C49.1221"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Барбершоп «Борода», Казань</div>
+</footer>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('form'), ok = $('ok');
+
+  $('year').textContent = new Date().getFullYear();
+
+  // Слоты времени 10:00–20:30 с шагом 30 минут
+  var timeSel = $('time');
+  for (var h = 10; h < 21; h++) {
+    ['00','30'].forEach(function(m){
+      var t = (h < 10 ? '0' : '') + h + ':' + m;
+      var o = document.createElement('option');
+      o.value = o.textContent = t;
+      timeSel.appendChild(o);
+    });
+  }
+
+  // Минимальная дата — сегодня (по местному времени)
+  var d = new Date();
+  var iso = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  $('date').min = iso;
+
+  // Выбор услуги кнопками в прайсе
+  document.querySelectorAll('[data-service]').forEach(function(a){
+    a.addEventListener('click', function(){ $('service').value = a.getAttribute('data-service'); });
+  });
+
+  // Простая маска телефона: +7 900 000-00-00
+  var phone = $('phone');
+  phone.addEventListener('input', function(){
+    var digits = phone.value.replace(/\D/g,'');
+    if (!digits) { phone.value = ''; return; }
+    if (digits[0] === '8') digits = '7' + digits.slice(1);
+    if (digits[0] !== '7') digits = '7' + digits;
+    digits = digits.slice(0, 11);
+    var r = '+7';
+    if (digits.length > 1)  r += ' ' + digits.slice(1,4);
+    if (digits.length > 4)  r += ' ' + digits.slice(4,7);
+    if (digits.length > 7)  r += '-' + digits.slice(7,9);
+    if (digits.length > 9)  r += '-' + digits.slice(9,11);
+    phone.value = r;
+  });
+
+  function setErr(field, msg){
+    $('err-' + field).textContent = msg || '';
+    $(field).setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
+
+  function validate(){
+    var good = true;
+    good = setErr('name', $('name').value.trim().length < 2 ? 'Введите имя' : '') && good;
+    var digits = phone.value.replace(/\D/g,'');
+    good = setErr('phone', digits.length !== 11 ? 'Введите номер полностью' : '') && good;
+    good = setErr('service', !$('service').value ? 'Выберите услугу' : '') && good;
+    var date = $('date').value;
+    good = setErr('date', !date ? 'Выберите дату' : (date < iso ? 'Дата уже прошла' : '')) && good;
+    good = setErr('time', !$('time').value ? 'Выберите время' : '') && good;
+    return good;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!validate()) {
+      var first = form.querySelector('[aria-invalid="true"]');
+      if (first) first.focus();
+      return;
+    }
+    var data = {
+      name: $('name').value.trim(),
+      phone: phone.value,
+      service: $('service').value,
+      date: $('date').value,
+      time: $('time').value
+    };
+
+    /* Здесь подключается отправка на сервер, например:
+       fetch('/api/booking', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+       Сейчас заявка только показывается на экране. */
+
+    var parts = data.date.split('-');
+    $('ok-text').textContent = data.name + ', ждём вас ' + parts[2] + '.' + parts[1] + '.' + parts[0] +
+      ' в ' + data.time + ' (' + data.service + '). Мы позвоним на ' + data.phone + ' для подтверждения.';
+    form.style.display = 'none';
+    ok.classList.add('show');
+    ok.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  ['name','phone','service','date','time'].forEach(function(id){
+    $(id).addEventListener('input', function(){ if ($(id).getAttribute('aria-invalid') === 'true') validate(); });
+  });
+})();
+</script>
+</body>
+</html>
